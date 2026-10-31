@@ -1,1 +1,14 @@
-<p>subir-imagen-component works!</p>
+<h2>Subir imagen</h2>
+
+<div>
+    <input 
+        type="file" 
+        #cajaImagen
+        accept="image/*"
+        (change)="seleccionarImagen()"
+    />
+
+    <button (click)="subirFichero()">
+        Subir Fichero
+    </button>
+</div>

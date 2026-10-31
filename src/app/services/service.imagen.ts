@@ -14,10 +14,11 @@ export class ServiceImagen {
 
     async subirFichero(file: Imagen): Promise<any> {
         let request = "UploadFiles/SubirFichero";
-        let header = new HttpHeaders()
-            .set("content-type", "application/json");
-        return firstValueFrom(
-        this._http.post<any>(this.url + request, file, {headers: header})
+        let header = new HttpHeaders();
+        header = header.set("content-type", "application/json");
+
+        return await firstValueFrom(
+            this._http.post(this.url + request, file, {headers: header})
         )
     }
 }
