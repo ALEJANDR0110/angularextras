@@ -41,6 +41,8 @@ export class ApiFilesComponent {
       this._service.postFile(fileModel).subscribe((response) => {
         this.mensaje = "Fichero subido correctamente";
         console.log(response);
+        this.urlFile = response.urlFile;
+        this._cdr.detectChanges();
       })
     }
 
