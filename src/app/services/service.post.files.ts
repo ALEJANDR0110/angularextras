@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpContext, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { FileModel } from "../models/filemodel";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment.development";
+import { SKIP_TOKEN } from "../utils/token.context";
 
 @Injectable()
 export class ServicePostFiles {
@@ -14,6 +15,6 @@ export class ServicePostFiles {
             .set("content-type", "application/json");
         let request = "api/testingfiles";
         let url = environment.apiFiles + request;
-        return this._http.post(url, json, {headers: header});
+        return this._http.post(url, json, {headers: header,  context: new HttpContext().set(SKIP_TOKEN, true)});
     }
 }
